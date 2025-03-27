@@ -10,7 +10,8 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Using your local runner instead of GitHub-hosted
+    runs-on: [self-hosted, Windows]
+
 
     steps:
       - name: Checkout Repository
