@@ -28,7 +28,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile --windowed --name ExcelFilterApp main.py
+          pyinstaller --onefile --windowed --name ExcelFilterApp filter.py
 
       - name: Upload EXE as Artifact
         uses: actions/upload-artifact@v4
