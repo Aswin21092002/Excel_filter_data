@@ -23,11 +23,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install --upgrade pip
-          pip install pandas speechrecognition matplotlib seaborn ttkthemes openpyxl pyaudio
+          python -m pip install --upgrade pip
+          pip install pyinstaller pandas speechrecognition matplotlib seaborn ttkthemes openpyxl pyaudio
+
+      - name: Verify PyInstaller Installation
+        run: pyinstaller --version  # Check if PyInstaller is installed correctly
 
       - name: Build EXE with All Dependencies
-        run: pyinstaller --onefile --windowed --hidden-import pandas --hidden-import speech_recognition --hidden-import matplotlib --hidden-import seaborn --hidden-import ttkthemes --hidden-import openpyxl --hidden-import pyaudio --name ExcelFilterApp filter.py
+        run: |
+          python -m PyInstaller --onefile --windowed --hidden-import pandas --hidden-import speech_recognition --hidden-import matplotlib --hidden-import seaborn --hidden-import ttkthemes --hidden-import openpyxl --hidden-import pyaudio --name ExcelFilterApp filter.py
 
       - name: Upload EXE as Artifact
         uses: actions/upload-artifact@v4
